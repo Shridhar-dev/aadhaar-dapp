@@ -4,6 +4,8 @@ import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
 
 import { useEffect, useState } from "react";
 
+import IPFSUploader from "./components/ImageUploader";
+
 export default function Home() {
   const [AnonAadhaar] = useAnonAadhaar()
   const [data, setData] = useState<any>({})
@@ -37,7 +39,10 @@ export default function Home() {
                 <li>Pincode: {data.pincode}</li>
               </ul>
             } 
+      
       </div>
+
+      <IPFSUploader />
     </main>
   );
 }
