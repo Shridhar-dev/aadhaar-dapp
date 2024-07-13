@@ -36,3 +36,6 @@ yarn-error.log*
 next-env.d.ts
 
 *.zkey
+
+aadhaar-verifier.wasm
+circuit_final.zkey
