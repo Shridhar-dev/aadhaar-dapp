@@ -1,16 +1,7 @@
 "use client"
 import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { init, prove, InitArgs, artifactUrls, ArtifactsOrigin, generateArgs } from "@anon-aadhaar/core";
-import { certificate } from '../utils/certificate';
 
-const anonAadhaarInitArgs: InitArgs = {
-  wasmURL: artifactUrls.v2.wasm,
-  zkeyURL: artifactUrls.v2.zkey,
-  vkeyURL: artifactUrls.v2.vk,
-  artifactsOrigin:ArtifactsOrigin.local
-};
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [AnonAadhaar] = useAnonAadhaar()
