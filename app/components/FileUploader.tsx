@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 
 const FileUploader: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -110,11 +111,14 @@ const FileUploader: React.FC = () => {
         {previewUrl && (
           <div className="mt-4">
             <p className="font-semibold">Selected Image Preview:</p>
-            <img 
-              src={previewUrl}
-              alt="Selected image preview" 
-              className="mt-2 max-w-full h-auto"
-            />
+            <div className="relative w-full h-64">
+              <Image 
+                src={previewUrl}
+                alt="Selected image preview" 
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
           </div>
         )}
         <button 
@@ -129,11 +133,14 @@ const FileUploader: React.FC = () => {
       {imageCid && (
         <div className="mt-4">
           <p className="font-semibold">Uploaded Image:</p>
-          <img 
-            src={`https://${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${imageCid}`}
-            alt="Uploaded image" 
-            className="mt-2 max-w-full h-auto"
-          />
+          <div className="relative w-full h-64">
+            <Image 
+              src={`https://${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${imageCid}`}
+              alt="Uploaded image" 
+              fill
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
         </div>
       )}
       
