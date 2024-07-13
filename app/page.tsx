@@ -4,7 +4,7 @@ import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
 
 import { useEffect, useState } from "react";
 
-import IPFSUploader from "./components/ImageUploader";
+import IPFSUploader from "./components/FileUploader";
 
 export default function Home() {
   const [AnonAadhaar] = useAnonAadhaar()
