@@ -1,4 +1,5 @@
 "use client"
+import { getLocationFromPincode } from "@/utils/getLocationFromPincode";
 import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
 
 import { useEffect, useState } from "react";
@@ -6,14 +7,17 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [AnonAadhaar] = useAnonAadhaar()
   const [data, setData] = useState<any>({})
-
   
+  const setLocation = async(pincode:string) => {
+    let location = await getLocationFromPincode(pincode);
+    setData((prev:any)=>({...prev, location}));
+  }
   
   useEffect(() => {
-    console.log('Country Identity status: ', AnonAadhaar.status)
     if(AnonAadhaar.status === "logged-in"){
-      setData(JSON.parse(AnonAadhaar.anonAadhaarProofs[0].pcd).proof)
-      console.log(JSON.parse(AnonAadhaar.anonAadhaarProofs[0].pcd))
+      let parsedData = JSON.parse(AnonAadhaar.anonAadhaarProofs[0].pcd).proof;
+      setData(parsedData)
+      setLocation(parsedData.pincode);
     }
   }, [AnonAadhaar])
   
@@ -27,7 +31,7 @@ export default function Home() {
             {
               AnonAadhaar.status === "logged-in" &&
               <ul className="border p-10 mt-10">
-                <li>State: {data.state}</li>
+                <li>Location: {data.location}</li>
                 <li>Above 18: {data.ageAbove18 == 1 ? "Yes" : "No"}</li>
                 <li>Gender: {data.gender == 77 ? "Male" : "Female"}</li>
                 <li>Pincode: {data.pincode}</li>
