@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AnonAadhaarProvider  _fetchArtifactsFromServer={false}>
+        <AnonAadhaarProvider _fetchArtifactsFromServer={false} _useTestAadhaar={true} >
           {children}
         </AnonAadhaarProvider>
       </body>
