@@ -1,8 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+First, Download the 1gb [circuit_final.zkey](https://d1re67zv2jtrxt.cloudfront.net/circuit_final.zkey) 
 
-First, run the development server:
+and place it in the public folder, then
+
+Install the necessary packages
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+then, run the development server:
 
 ```bash
 npm run dev
@@ -13,6 +27,8 @@ pnpm dev
 # or
 bun dev
 ```
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
