@@ -27,7 +27,7 @@ export default function Home() {
     <main className="bg-white text-black flex min-h-screen flex-col items-center justify-between p-24">
       <div className="relative">
        
-          <LogInWithAnonAadhaar fieldsToReveal={["revealGender","revealAgeAbove18","revealPinCode","revealState"]}  nullifierSeed={1234} />
+          <LogInWithAnonAadhaar useTestAadhaar={true} fieldsToReveal={["revealGender","revealAgeAbove18","revealPinCode","revealState"]}  nullifierSeed={1234} />
 
             <p>{AnonAadhaar.status}</p>
             {
