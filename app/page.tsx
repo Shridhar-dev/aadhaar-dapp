@@ -44,32 +44,41 @@ export default function Home() {
   return (
     <main className="bg-white text-black flex min-h-screen flex-col items-center justify-between p-24">
       <div className="relative">
-        <button onClick={connectWallet} className="bg-blue-500 text-white px-4 py-2 rounded">
-          Connect Wallet
-        </button>
-        
-        <p className="mt-4">Wallet Address: {walletAddress}</p>
-        
-        <LogInWithAnonAadhaar 
-          fieldsToReveal={["revealGender","revealAgeAbove18","revealPinCode","revealState"]}  
-          nullifierSeed={1234}  
-          signal={walletAddress}
-          useTestAadhaar={true}
-        />
+        <p className="font-pacifico text-9xl text-center text-pink-400">Hello</p>
+        <p className="text-center text-xl my-5">Finding your match, Anonymously</p>
+        <div className="border p-10">
+          <button onClick={connectWallet} className="bg-blue-500 text-white px-4 py-2 w-full rounded">
+            Connect Wallet
+          </button>
+          <p className="mt-4">Wallet Address: {walletAddress ? walletAddress : "Not Connected"}</p>
+          {
+            walletAddress &&
+            <>
+              <p className="mt-10 font-medium">Link your Aadhaar to proceed</p>
+              <div>
+                <LogInWithAnonAadhaar 
+                  fieldsToReveal={["revealGender","revealAgeAbove18","revealPinCode","revealState"]}  
+                  nullifierSeed={1234}  
+                  signal={walletAddress}
+                  useTestAadhaar={true}
+                />
+              </div>
+            </>
+          }
+          <p className="mt-5">Aadhaar Status: {AnonAadhaar.status}</p>
+          {
+            AnonAadhaar.status === "logged-in" &&
+            <ul className="border p-10 mt-10">
+              <li>Location: {data.location}</li>
+              <li>Above 18: {data.ageAbove18 == 1 ? "Yes" : "No"}</li>
+              <li>Gender: {data.gender == 77 ? "Male" : "Female"}</li>
+              <li>Pincode: {data.pincode}</li>
+            </ul>
+          } 
+        </div>
 
-        <p>{AnonAadhaar.status}</p>
-        {
-          AnonAadhaar.status === "logged-in" &&
-          <ul className="border p-10 mt-10">
-            <li>Location: {data.location}</li>
-            <li>Above 18: {data.ageAbove18 == 1 ? "Yes" : "No"}</li>
-            <li>Gender: {data.gender == 77 ? "Male" : "Female"}</li>
-            <li>Pincode: {data.pincode}</li>
-          </ul>
-        } 
+        <IPFSUploader />
       </div>
-
-      <IPFSUploader />
     </main>
   );
 }

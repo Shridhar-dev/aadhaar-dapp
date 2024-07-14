@@ -1,11 +1,11 @@
 "use client"
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Pacifico } from "next/font/google";
 import "./globals.css";
 import { AnonAadhaarProvider } from '@anon-aadhaar/react'
 
 const inter = Inter({ subsets: ["latin"] });
-
+const pacifico = Pacifico({ subsets: ["latin"], weight:"400", variable: '--font-pacifico', });
 
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${pacifico.variable} ${inter.className}`}>
         <AnonAadhaarProvider _fetchArtifactsFromServer={false} _useTestAadhaar={true} >
           {children}
         </AnonAadhaarProvider>

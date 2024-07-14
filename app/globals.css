@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.font-pacifico {
+  font-family: var(--font-pacifico);
+}
